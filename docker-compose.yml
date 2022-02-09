@@ -1,0 +1,13 @@
+version: "3.3"
+services:
+    webserver:
+        image: framenetbrasil/apache-php:v3.8
+        restart: unless-stopped
+        ports:
+            - "8888:80"
+        volumes:
+            - .:/var/www/html
+            - /home/master/projects/orkester:/var/www/html/vendor/elymatos/orkester
+            - ./docker/php.ini:/usr/local/etc/php/php.ini
+            - ./docker/vhosts.conf:/etc/apache2/sites-enabled/000-default.conf
+            - ./var/apache2:/var/log/apache2
