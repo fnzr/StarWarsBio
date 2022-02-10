@@ -1,0 +1,18 @@
+<html>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<body>
+<script>
+    const query =
+        `
+    query {
+        characters {
+            name
+        }
+    }
+    `
+    axios
+        .post('/graphql', {query, variables: {}})
+        .then(resp => console.log(resp.data.data))
+</script>
+</body>
+</html>

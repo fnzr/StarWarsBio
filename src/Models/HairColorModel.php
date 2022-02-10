@@ -11,7 +11,7 @@ class HairColorModel extends \Orkester\MVC\MModelMaestro
             'value' => ['type' => 'string'],
         ],
         'associations' => [
-//            'article' => ['model' => ArticleModel::class, 'type' => 'one', 'key' => 'idArticle'],
+            'characters' => ['model' => CharacterModel::class, 'type' => 'many', 'key' => 'idHairColor'],
         ]
     ];
 }

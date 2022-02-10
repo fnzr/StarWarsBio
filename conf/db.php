@@ -4,7 +4,7 @@ return [
         'star_wars' => [
             'db' => 'mysql',
             'driver' => 'pdo_mysql',
-            'host' => 'localhost:33065',
+            'host' => '172.17.0.1:33065',
             'dbname' => 'star_wars',
             'user' => 'root',
             'password' => 'secret',

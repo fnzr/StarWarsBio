@@ -37,7 +37,7 @@ return [
         'path' => __DIR__ . '/../var/log',
         'level' => 2,
         'handler' => "socket",
-        //'peer' => isset($_SERVER['REMOTE_ADDR']) ? 'host.docker.internal' : 'localhost',
+//        'peer' => isset($_SERVER['REMOTE_ADDR']) ? 'host.docker.internal' : 'localhost',
         'peer' => '192.168.0.3', //192.168.0.172
         //'strict' => '127.0.0.1',
         'port' => 9999,
