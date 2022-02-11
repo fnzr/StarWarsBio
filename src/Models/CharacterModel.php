@@ -2,15 +2,17 @@
 
 namespace Sample\StarWarsBio\Models;
 
-class CharacterModel extends \Orkester\MVC\MModelMaestro
+use Orkester\Exception\EValidationException;
+
+class CharacterModel extends \Orkester\MVC\MModel
 {
     public static array $map = [
         'table' => '`character`',
         'attributes' => [
             'idCharacter' => ['key' => 'primary'],
-            'name' => ['type' => 'string'],
-            'height' => ['type' => 'string'],
-            'mass' => ['type' => 'string'],
+            'name' => ['type' => 'string', 'nullable' => false],
+            'height' => ['type' => 'int'],
+            'mass' => ['type' => 'string', 'validator' => CharacterModel::class . "::validateMass" ],
         ],
         'associations' => [
             'homeworld' => ['model' => PlanetModel::class, 'type' => 'one', 'key' => 'idPlanet'],
@@ -18,4 +20,11 @@ class CharacterModel extends \Orkester\MVC\MModelMaestro
             'eyeColor' => ['model' => EyeColorModel::class, 'type' => 'one', 'key' => 'idEyeColor']
         ]
     ];
+
+    public static function validateMass(&$value)
+    {
+        if ($value < 0) {
+            throw new EValidationException(['mass' => 'less_than_zero']);
+        }
+    }
 }

@@ -2,7 +2,7 @@
 
 namespace Sample\StarWarsBio\Models;
 
-class HairColorModel extends \Orkester\MVC\MModelMaestro
+class HairColorModel extends \Orkester\MVC\MModel
 {
     public static array $map = [
         'table' => 'hair_color',

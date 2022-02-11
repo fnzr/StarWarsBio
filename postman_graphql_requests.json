@@ -1,0 +1,1005 @@
+{
+	"info": {
+		"_postman_id": "2cb3d0ff-75f9-4286-8a82-798542b25b2d",
+		"name": "Star Wars Bio",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Query",
+			"item": [
+				{
+					"name": "Selection",
+					"item": [
+						{
+							"name": "Basic",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query {\n    character {\n        name\n    }\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}{{gql_endpoint}}",
+									"host": [
+										"{{base_url}}{{gql_endpoint}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Alias",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query {\n    hero: character {\n        alias: name\n    }\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}{{gql_endpoint}}",
+									"host": [
+										"{{base_url}}{{gql_endpoint}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Flattened Association",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query {\n    character {\n        name\n        origin(field: \"homeworld.name\")\n    }\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}{{gql_endpoint}}",
+									"host": [
+										"{{base_url}}{{gql_endpoint}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Nested Association",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query {\n    hairColors(where: {color: {eq: \"blond\"}}) {\n        color: value\n        characters {\n            name\n        }\n    }\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}{{gql_endpoint}}",
+									"host": [
+										"{{base_url}}{{gql_endpoint}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Expression",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query {\n    character {\n        info (expr: \"concat(name, ' - ', homeworld.name)\")\n    }\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}{{gql_endpoint}}",
+									"host": [
+										"{{base_url}}{{gql_endpoint}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Operators",
+					"item": [
+						{
+							"name": "Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query {\n    character (id: 5) {\n        name\n    }\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}{{gql_endpoint}}",
+									"host": [
+										"{{base_url}}{{gql_endpoint}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Limit & Offset",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query {\n    characters(limit: 3, offset: 2) {\n        name\n    }\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}{{gql_endpoint}}",
+									"host": [
+										"{{base_url}}{{gql_endpoint}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Order By",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query {\n    characters (order_by: [{asc: \"homeworld.name\"}, {desc: \"name\"}], limit: 5) {\n        name\n        origin (field: \"homeworld.name\")\n    }\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}{{gql_endpoint}}",
+									"host": [
+										"{{base_url}}{{gql_endpoint}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Group",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query {\n    characters(group: [\"idHairColor\"]) {\n        hair(field: \"hairColor.value\")\n        cnt(expr: \"count(idCharacter)\")\n    }\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}{{gql_endpoint}}",
+									"host": [
+										"{{base_url}}{{gql_endpoint}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Join",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query {\n    species(join: {left: \"classification\"}) {\n        name,\n        classification(field: \"classification.value\")\n    }\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}{{gql_endpoint}}",
+									"host": [
+										"{{base_url}}{{gql_endpoint}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Conditions",
+					"item": [
+						{
+							"name": "Basic",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "## Generic operators:\n# eq =\n# neq <>\n# gt >\n# lt <\n# gte >=\n# lte <=\n# in IN\n# nin NOT In\n# {is_null: true} IS NULL\n# {is_null: false} IS NOT NULL\n## Textual operators\n# like LIKE\n# nlike NOT LIKE\n# regex RLIKE\nquery {\n    characters (where: {name: {nlike: \"%skywalker%\"}, height: {gt: 180}, idHairColor: {is_null: false}}) {\n        name\n        idCharacter\n    }\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}{{gql_endpoint}}",
+									"host": [
+										"{{base_url}}{{gql_endpoint}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Association",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query {\n    brunettes:characters(where: {_condition: [\"hairColor.value\", {eq: \"black\"}]}) {\n        name\n        hair (field: \"hairColor.value\")\n    }\n}\n",
+										"variables": "{\n    \"path\": {\"hairColor.value\": {\"eq\": \"black\"}}\n}"
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}{{gql_endpoint}}",
+									"host": [
+										"{{base_url}}{{gql_endpoint}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Or",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query {\n    characters(where: {or: {name: {like: \"Luke%\"}, name: {like: \"Leia%\"}}}) {\n        name\n    }\n}\n",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}{{gql_endpoint}}",
+									"host": [
+										"{{base_url}}{{gql_endpoint}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Insert",
+			"item": [
+				{
+					"name": "Single",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation insert {\n    character (\n        object: {\n            name: \"Din Djarin\",\n            height: 180,\n            hairColor: 214\n        }\n    ) {\n        idCharacter\n        name\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{gql_endpoint}}",
+							"host": [
+								"{{base_url}}{{gql_endpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Multiple",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation insert {\n    characters (\n        objects: [\n            {\n                name: \"Din Djarin\",\n                height: 180,\n                hairColor: 214\n            },\n            {\n                name: \"Rook Kast\",\n                height: 170,\n                eyeColor: 1\n            }\n        ]\n    ) {\n        idCharacter\n        name\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{gql_endpoint}}",
+							"host": [
+								"{{base_url}}{{gql_endpoint}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Update",
+			"item": [
+				{
+					"name": "Object",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation update {\n    characters(\n        id: 5\n        set: {\n            name: \"Leia Skywalker Organa Solo\"\n        }\n    )\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{gql_endpoint}}",
+							"host": [
+								"{{base_url}}{{gql_endpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "One To Many",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation update {\n    characters(\n        where: {idHairColor: {is_null: true}}\n        set: {idHairColor: 219}\n        ) {\n            idCharacter\n            idHairColor\n        }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{gql_endpoint}}",
+							"host": [
+								"{{base_url}}{{gql_endpoint}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Delete",
+			"item": [
+				{
+					"name": "Object",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "#delete mutations only accept \"id\" and \"where\" operators\nmutation delete {\n    characters(id: 5)\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{gql_endpoint}}",
+							"host": [
+								"{{base_url}}{{gql_endpoint}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Advanced",
+			"item": [
+				{
+					"name": "Subquery - Query",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n    hairColors(omit: true, where: {value: {in: [\"black\", \"blond\"]}}) {\n        idHairColor\n    }\n\n    characters(where: {idHairColor: {in: \"$q:hairColors.idHairColor\"}}) {\n        name\n        hair(field: \"hairColor.value\")\n    }\n}\n",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{gql_endpoint}}",
+							"host": [
+								"{{base_url}}{{gql_endpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Subquery - Insert",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n    hairColor(omit: true, where: {value: {eq: \"brown\"}}) {\n        idHairColor\n    }\n}\n\nmutation insert {\n    character (\n        one:true\n        object: {\n            name: \"Din Djarin\",\n            height: 180,\n            hairColor: \"$q:hairColor.idHairColor\"\n        }\n    ) {\n        name\n        hair(field: \"hairColor.value\")\n    }\n}\n",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{gql_endpoint}}",
+							"host": [
+								"{{base_url}}{{gql_endpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fragment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "fragment PlanetInfo on Character {\n    homeworld {\n        name\n        diameter\n        gravity\n    }\n}\n\nquery {\n    character(one:true) {\n        name\n        ...PlanetInfo\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{gql_endpoint}}",
+							"host": [
+								"{{base_url}}{{gql_endpoint}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Validation",
+			"item": [
+				{
+					"name": "Null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation insert {\n    character(\n        object: {\n            name: null\n        }\n    )\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{gql_endpoint}}",
+							"host": [
+								"{{base_url}}{{gql_endpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Value",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation insert {\n    character(\n        object: {\n            name: \"Grogu\"\n            mass: -5\n        }\n    )\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{gql_endpoint}}",
+							"host": [
+								"{{base_url}}{{gql_endpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Multiple Fields",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation insert {\n    character(\n        object: {\n            name: null\n            mass: -5\n        }\n    )\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{gql_endpoint}}",
+							"host": [
+								"{{base_url}}{{gql_endpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Multiple Errors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation insert {\n    planet (\n        object: {\n            name: \"0\"\n        }\n    )\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{gql_endpoint}}",
+							"host": [
+								"{{base_url}}{{gql_endpoint}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Service",
+			"item": [
+				{
+					"name": "Named",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation service {\n    login(username: \"admin\" password: \"123\") {\n        token\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{gql_endpoint}}",
+							"host": [
+								"{{base_url}}{{gql_endpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Resolved",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation service {\n    Auth_login(username: \"admin\" password:\"123\") {\n        token\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{gql_endpoint}}",
+							"host": [
+								"{{base_url}}{{gql_endpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "NonArray Return",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation service {\n    Auth_NonArrayReturn {\n        result\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{gql_endpoint}}",
+							"host": [
+								"{{base_url}}{{gql_endpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Forced return",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation service {\n    login(password: \"123\", username: \"admin\") {\n        result\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{gql_endpoint}}",
+							"host": [
+								"{{base_url}}{{gql_endpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Missing argument",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation service {\n    login(username: \"admin\") {\n        token\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{gql_endpoint}}",
+							"host": [
+								"{{base_url}}{{gql_endpoint}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8888/"
+		},
+		{
+			"key": "gql_endpoint",
+			"value": "graphql"
+		}
+	]
+}

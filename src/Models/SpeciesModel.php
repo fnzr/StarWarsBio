@@ -2,12 +2,12 @@
 
 namespace Sample\StarWarsBio\Models;
 
-class SpeciesModel extends \Orkester\MVC\MModelMaestro
+class SpeciesModel extends \Orkester\MVC\MModel
 {
     public static array $map = [
         'table' => 'species',
         'attributes' => [
-            'idHairColor' => ['key' => 'primary'],
+            'idSpecies' => ['key' => 'primary'],
             'name' => ['type' => 'string'],
             'average_height' => ['type' => 'string'],
         ],

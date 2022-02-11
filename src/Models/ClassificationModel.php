@@ -2,7 +2,7 @@
 
 namespace Sample\StarWarsBio\Models;
 
-class ClassificationModel extends \Orkester\MVC\MModelMaestro
+class ClassificationModel extends \Orkester\MVC\MModel
 {
     public static array $map = [
         'table' => 'classification',
