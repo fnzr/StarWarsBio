@@ -674,139 +674,6 @@
 			]
 		},
 		{
-			"name": "Validation",
-			"item": [
-				{
-					"name": "Null",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "graphql",
-							"graphql": {
-								"query": "mutation insert {\n    character(\n        object: {\n            name: null\n        }\n    )\n}",
-								"variables": ""
-							}
-						},
-						"url": {
-							"raw": "{{base_url}}{{gql_endpoint}}",
-							"host": [
-								"{{base_url}}{{gql_endpoint}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Value",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "graphql",
-							"graphql": {
-								"query": "mutation insert {\n    character(\n        object: {\n            name: \"Grogu\"\n            mass: -5\n        }\n    )\n}",
-								"variables": ""
-							}
-						},
-						"url": {
-							"raw": "{{base_url}}{{gql_endpoint}}",
-							"host": [
-								"{{base_url}}{{gql_endpoint}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Multiple Fields",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "graphql",
-							"graphql": {
-								"query": "mutation insert {\n    character(\n        object: {\n            name: null\n            mass: -5\n        }\n    )\n}",
-								"variables": ""
-							}
-						},
-						"url": {
-							"raw": "{{base_url}}{{gql_endpoint}}",
-							"host": [
-								"{{base_url}}{{gql_endpoint}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Multiple Errors",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "graphql",
-							"graphql": {
-								"query": "mutation insert {\n    planet (\n        object: {\n            name: \"0\"\n        }\n    )\n}",
-								"variables": ""
-							}
-						},
-						"url": {
-							"raw": "{{base_url}}{{gql_endpoint}}",
-							"host": [
-								"{{base_url}}{{gql_endpoint}}"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "Service",
 			"item": [
 				{
@@ -957,6 +824,277 @@
 							"mode": "graphql",
 							"graphql": {
 								"query": "mutation service {\n    login(username: \"admin\") {\n        token\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{gql_endpoint}}",
+							"host": [
+								"{{base_url}}{{gql_endpoint}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Errors",
+			"item": [
+				{
+					"name": "Validation",
+					"item": [
+						{
+							"name": "Null",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "mutation insert {\n    character(\n        object: {\n            name: null\n        }\n    )\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}{{gql_endpoint}}",
+									"host": [
+										"{{base_url}}{{gql_endpoint}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Value",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "mutation insert {\n    character(\n        object: {\n            name: \"Grogu\"\n            mass: -5\n        }\n    )\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}{{gql_endpoint}}",
+									"host": [
+										"{{base_url}}{{gql_endpoint}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Multiple Fields",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "mutation insert {\n    character(\n        object: {\n            name: null\n            mass: -5\n        }\n    )\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}{{gql_endpoint}}",
+									"host": [
+										"{{base_url}}{{gql_endpoint}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Multiple Errors",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "mutation insert {\n    planet (\n        object: {\n            name: \"0\"\n        }\n    )\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}{{gql_endpoint}}",
+									"host": [
+										"{{base_url}}{{gql_endpoint}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Not Found",
+					"item": [
+						{
+							"name": "Model",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query {\n    myModel {\n        name\n    }\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}{{gql_endpoint}}",
+									"host": [
+										"{{base_url}}{{gql_endpoint}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Attribute",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query {\n    character {\n        race\n    }\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}{{gql_endpoint}}",
+									"host": [
+										"{{base_url}}{{gql_endpoint}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Multiple Queries",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query {\n    c1: character {\n        race\n        xyz\n    }\n\n    c2: character {\n        x\n    }\n\n    c3: character {\n        name\n    }\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}{{gql_endpoint}}",
+									"host": [
+										"{{base_url}}{{gql_endpoint}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Syntax Error",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation insert {\n    character{}\n}",
 								"variables": ""
 							}
 						},
